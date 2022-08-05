@@ -1,10 +1,12 @@
-const router = require("express").Router();
-const { User } = require("../..models");
+const router = require('express').Router();
+const { User } = require('../../models');
 
 // GET /api/users
-router.get("/", (req, res) => {
-  // Access our User model and run .findAll() method
-  User.findAll()
+router.get('/', (req, res) => {
+  // Access our User model and run .findAll() method)
+  User.findAll({
+    attributes: { exclude: ['password'] },
+  })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
       console.log(err);
@@ -13,15 +15,16 @@ router.get("/", (req, res) => {
 });
 
 // GET /api/users/1
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
   User.findOne({
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id,
     },
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this is" });
+        res.status(404).json({ message: 'No user found with this id' });
         return;
       }
       res.json(dbUserData);
@@ -33,7 +36,7 @@ router.get("/:id", (req, res) => {
 });
 
 // POST /api/users
-router.post("/", (req, res) => {
+router.post('/', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
     username: req.body.username,
@@ -48,7 +51,7 @@ router.post("/", (req, res) => {
 });
 
 // PUT /api/users/1
-router.put("/:id", (req, res) => {
+router.put('/:id', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
   // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
@@ -59,7 +62,7 @@ router.put("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData[0]) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: 'No user found with this id' });
         return;
       }
       res.json(dbUserData);
@@ -71,7 +74,7 @@ router.put("/:id", (req, res) => {
 });
 
 // DELETE /api/users/1
-router.delete("/:id", (req, res) => {
+router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,
@@ -79,7 +82,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: 'No user found with this id' });
         return;
       }
       res.json(dbUserData);
