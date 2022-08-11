@@ -22,10 +22,6 @@ async function loginFormHandler(event) {
   }
 }
 
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
-
 async function signupFormHandler(event) {
   event.preventDefault();
 
