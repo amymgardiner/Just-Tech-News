@@ -10,4 +10,4 @@ For Module 14, I created the front end using Handlebars.js, a popular templating
 
 The [Render Link](https://just-tech-news-i86q.onrender.com/) for the app is here for you to view.
 
-**Update: Due to the removal of Heroku's free product plans, I have found another free hosting platform that was not taught in the bootcamp. The [Heroku link](https://powerful-gorge-74483.herokuapp.com/) for this site no longer works. Please view this site with the new link below. Thanks!**
+**Update: Due to the removal of Heroku's free product plans, I have found another free hosting platform that was not taught in the bootcamp. The [Heroku link](https://powerful-gorge-74483.herokuapp.com/) for this site no longer works. Please view this site with the new link above. Thanks!**
