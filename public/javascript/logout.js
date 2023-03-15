@@ -5,7 +5,7 @@ async function logout() {
   });
 
   if (response.ok) {
-    document.location.('/');
+    document.location('/');
   } else {
     alert(response.statusText);
   }
